@@ -10,8 +10,8 @@ public class Dibujador {
 
 
 	String path = "C:\\Archivos de Programa\\Graphviz 2.28\\bin\\dot.exe";
-	String output = "D:\\tp conpiladores netbeans ws\\graficos";
-	final String fOutput = "D:\\tp conpiladores netbeans ws\\graficos";
+	String output = "D:\\tp conpiladores netbeans ws\\graficos\\";
+	final String fOutput = "D:\\tp conpiladores netbeans ws\\graficos\\";
 	String input = "D:\\tp conpiladores netbeans ws\\graficos\\grafo.txt";
 
 	private FA automata;
@@ -34,6 +34,7 @@ public class Dibujador {
 		if (automata instanceof EmuladorFA)
 			emulado = (EmuladorFA) automata;
 		this.automata = automata;
+
 	}
 
 	public void ejecutar(String output) {

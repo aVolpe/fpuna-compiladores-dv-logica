@@ -21,19 +21,30 @@ public class EmuladorFA extends FA {
 		this.nodos = clon.nodos;
 
 		// System.out.println(this);
-		this.reiniciar();
+		
 
 		//FA nuevo = new FA(aEmular.alfabeto);
 		ArrayList<Nodo> nNodos = new ArrayList<Nodo>();
 		Nodo nInicial = null;
 		ArrayList<Nodo> nFinales = new ArrayList<Nodo>();
 		
-		
-		for (Nodo nodoActual : nodos) {
-			Nodo nuevo = new Nodo(nodoActual.nombre);
-			if (inicial.equals(nodoActual)) nInicial = nuevo;
-			if (finales.contains(nodoActual)) nFinales.add(nuevo);
+		for (Nodo nodo : nodos) {
+			Nodo nuevo = new Nodo(nodo.nombre);
 			nNodos.add(nuevo);
+			if (inicial.equals(nodo)) nInicial = nuevo;
+			if (finales.contains(nodo)) nFinales.add(nuevo);
+		}
+		for (Nodo nodoActual : nodos) {
+		
+			//busca el nodo entre la lista de nuevos nodos
+			Nodo nuevo = null;
+			for (Nodo nodo : nNodos) {
+				if (nodo.nombre.equals(nodoActual.nombre)) {
+					nuevo = nodo;
+					break;
+				}
+			}
+		
 			
 			ArrayList<Entry<String, ArrayList<Nodo>>> tratados = new ArrayList<Entry<String,ArrayList<Nodo>>>(); 
 			for (Entry<String, ArrayList<Nodo>> papa : nodoActual.apuntados
@@ -63,12 +74,25 @@ public class EmuladorFA extends FA {
 				Collections.sort(temp);
 				nKey = "";
 				for (String s : temp) nKey += s; 
-				nuevo.addSiguientes(papa.getValue(), nKey);
+						
+						
+				//ACTUALIZA LOS PUNTEROS A NUEVOS NODOS
+				ArrayList<Nodo> nApuntados = new ArrayList<Nodo>();
+				for (Nodo nodo : papa.getValue()) {
+					for (Nodo nNodo : nNodos) {
+						if (nNodo.nombre.equals(nodo.nombre)) {
+							nApuntados.add(nNodo);
+						}
+					}
+				}
+				nuevo.addSiguientes(nApuntados, nKey);
 			}
 		}
 		this.nodos = nNodos;
 		this.inicial = nInicial;
 		this.finales = nFinales;
+		
+		this.reiniciar();
 	}
 
 	private static boolean compararListaNodos(ArrayList<Nodo> uno,
@@ -103,12 +127,24 @@ public class EmuladorFA extends FA {
 		for (Nodo nodo : actuales) {
 			if (nodo.apuntados == null)
 				continue;
-			if (nodo.apuntados.get(letra + "") != null)
-				for (Nodo apuntado : nodo.apuntados.get(letra + "")) {
-					if (nActuales.contains(apuntado))
-						continue;
-					nActuales.add(apuntado);
+			
+			for (Entry<String, ArrayList<Nodo>> apuntados : nodo.apuntados.entrySet()) {
+				if (apuntados.getKey().contains(letra + ""))
+				{
+					for (Nodo apuntado : apuntados.getValue()) {
+						if (nActuales.contains(apuntado))
+							continue;
+						nActuales.add(apuntado);
+					}
+					break;
 				}
+			}
+//			if (nodo.apuntados.get(letra + "") != null)
+//				for (Nodo apuntado : nodo.apuntados.get(letra + "")) {
+//					if (nActuales.contains(apuntado))
+//						continue;
+//					nActuales.add(apuntado);
+//				}
 			if (nodo.apuntados.get(letras.empty) != null)
 				for (Nodo apuntado : nodo.apuntados.get(letras.empty)) {
 					avanzar(letra, apuntado, nActuales);
@@ -211,6 +247,22 @@ public class EmuladorFA extends FA {
 			}
 		}
 		return false;
+	}
+
+	public ArrayList<Nodo> getActuales() {
+		return actuales;
+	}
+
+	public void setActuales(ArrayList<Nodo> actuales) {
+		this.actuales = actuales;
+	}
+
+	public Stack<ArrayList<Nodo>> getAnteriores() {
+		return anteriores;
+	}
+
+	public void setAnteriores(Stack<ArrayList<Nodo>> anteriores) {
+		this.anteriores = anteriores;
 	}
 
 }
