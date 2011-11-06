@@ -1,12 +1,17 @@
 package pruebas;
 
+import java.util.ArrayList;
+
 import compiladores.Alfabeto;
 
 import archivos.AGuardar;
 import archivos.Guardador;
 import automatas.DFA;
 import automatas.Dibujador;
+import automatas.EmuladorFA;
+import automatas.FA;
 import automatas.NFA;
+import automatas.Nodo;
 import enumeraciones.Alfabetos;
 import enumeraciones.Thompson;
 import excepciones.ExpresionIncorrectaException;
@@ -136,22 +141,40 @@ public class Test {
 //		System.out.println(cargado.getNfa());
 //		System.out.println(cargado.getDfam());
 		
-		NFA aa = NFA.ConstruirNFA(Thompson.Kleene, NFA.ConstruirNFA("a", new Alfabeto(Alfabetos.AYB)));
-		NFA aob = NFA.ConstruirNFA(Thompson.O, NFA.ConstruirNFA("a"), NFA.ConstruirNFA("b"));
-		NFA aayaob = NFA.ConstruirNFA(Thompson.Y, aa, aob);
-		Dibujador dib = new Dibujador();
-		dib.cargarFromDA(aayaob.clonar());
-		dib.ejecutar("aayobNFA.jpg");
-		NFA temp = aayaob.clonar();
-		System.out.println(temp.getAlfabeto());
-		DFA dfa = new DFA(temp);
-		dib.cargarFromDA(dfa);
-		System.out.println(dfa);
-		dib.ejecutar("aayobDFA.jpg");
-		dfa.minimizar();
+//		NFA aa = NFA.ConstruirNFA(Thompson.Kleene, NFA.ConstruirNFA("a", new Alfabeto(Alfabetos.AYB)));
+//		NFA aob = NFA.ConstruirNFA(Thompson.O, NFA.ConstruirNFA("a"), NFA.ConstruirNFA("b"));
+//		NFA aayaob = NFA.ConstruirNFA(Thompson.Y, aa, aob);
+//		Dibujador dib = new Dibujador();
+//		dib.cargarFromDA(aayaob.clonar());
+//		dib.ejecutar("aayobNFA.jpg");
+//		NFA temp = aayaob.clonar();
+//		System.out.println(temp.getAlfabeto());
+//		DFA dfa = new DFA(temp);
+//		dib.cargarFromDA(dfa);
+//		System.out.println(dfa);
+//		dib.ejecutar("aayobDFA.jpg");
+//		dfa.minimizar();
+//		
+//		dib.ejecutar("aayobDFAm.jpg");
+//				
 		
-		dib.ejecutar("aayobDFAm.jpg");
-				
+		FA prueba = new FA(new Alfabeto(Alfabetos.AYB));
+		Nodo p1 = new Nodo("P1");
+		Nodo p2 = new Nodo("P2");
+		prueba.setInicial(p1);
+		ArrayList temp = new ArrayList();
+		temp.add(p2);
+		prueba.setFinales(temp);
+		p1.addTransicion(p2, "a");
+		p1.addTransicion(p2, "b");
+		prueba.AgregarNodo(p1);
+		prueba.AgregarNodo(p2);
+		EmuladorFA emulator = new EmuladorFA(prueba);
+		System.out.println(emulator);
+		Dibujador dib = new Dibujador();
+		
+		dib.cargarFromDA(emulator);
+		dib.ejecutar("test.jpg");
 	}
 
 }
