@@ -17,7 +17,7 @@ public class BNF {
 		for (Nodo nodo : automata.getNodos()) {
 			String clave = "A" + nodo.getNombre();
 			String valor = "";
-			for (Entry<String, List<Nodo>> entry: nodo.getApuntados().entrySet()) {
+			for (Entry<String, ArrayList<Nodo>> entry: nodo.getApuntados().entrySet()) {
 				for (Nodo apuntado : entry.getValue()) {
 					if (valor != "") valor += " | ";
 					valor += entry.getKey() + "A" + apuntado.getNombre();
