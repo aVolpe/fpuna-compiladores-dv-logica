@@ -13,6 +13,7 @@ package gui.ventanas;
 import automatas.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,6 +31,8 @@ public class FAtable extends javax.swing.JPanel {
 
     public FAtable() {
         initComponents();
+        
+        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     }
 
     public void setAutomata(FA automata) {
@@ -87,6 +90,7 @@ public class FAtable extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setFocusable(false);
         jTable1.setName("jTable1"); // NOI18N
         jScrollPane1.setViewportView(jTable1);
 

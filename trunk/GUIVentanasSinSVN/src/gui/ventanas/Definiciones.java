@@ -493,6 +493,7 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
                 Expresiones nuevo = new Expresiones();
                 nuevo.poblar(aGuardar);
+                
 
                 jTabbedPane1.addTab(nombreDef.getText(), nuevo);
                 //mapadeNfas = reg.generarNFAs();

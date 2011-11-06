@@ -11,12 +11,14 @@
 package gui.ventanas;
 
 import automatas.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Arturo
  */
-public class Emulator extends javax.swing.JPanel {
+public class Emulator2 extends javax.swing.JPanel {
 
     /**
 	 * 
@@ -31,11 +33,11 @@ public class Emulator extends javax.swing.JPanel {
     Dibujador dibujador;
 
     /** Creates new form Emulator */
-    public Emulator() {
+    public Emulator2() {
         initComponents();
         temp++;
         numero = temp;
-        this.cadena.setText("abba");
+        this.cadena.setText("");
     }
 
     public void setFA(EmuladorFA automata) {
@@ -58,38 +60,20 @@ public class Emulator extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         cadena = new javax.swing.JTextField();
-        dibujoDA1 = new gui.ventanas.DibujoDA();
         nextNFA = new javax.swing.JButton();
         previusNFA = new javax.swing.JButton();
         playNFA = new javax.swing.JButton();
+        graficadorFA1 = new gui.ventanas.GraficadorFA();
 
         setName("Form"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(gui.ventanas.GrafosVentanasApp.class).getContext().getResourceMap(Emulator.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(gui.ventanas.GrafosVentanasApp.class).getContext().getResourceMap(Emulator2.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
         cadena.setText(resourceMap.getString("cadena.text")); // NOI18N
         cadena.setToolTipText(resourceMap.getString("cadena.toolTipText")); // NOI18N
         cadena.setName("cadena"); // NOI18N
-
-        dibujoDA1.setName("dibujoDA1"); // NOI18N
-        dibujoDA1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                dibujoDA1MouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout dibujoDA1Layout = new javax.swing.GroupLayout(dibujoDA1);
-        dibujoDA1.setLayout(dibujoDA1Layout);
-        dibujoDA1Layout.setHorizontalGroup(
-            dibujoDA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
-        );
-        dibujoDA1Layout.setVerticalGroup(
-            dibujoDA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 242, Short.MAX_VALUE)
-        );
 
         nextNFA.setText(resourceMap.getString("nextNFA.text")); // NOI18N
         nextNFA.setName("nextNFA"); // NOI18N
@@ -110,19 +94,21 @@ public class Emulator extends javax.swing.JPanel {
             }
         });
 
+        graficadorFA1.setName("graficadorFA1"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dibujoDA1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(graficadorFA1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cadena, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(previusNFA)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(playNFA)
@@ -138,7 +124,7 @@ public class Emulator extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(cadena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dibujoDA1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(graficadorFA1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextNFA)
@@ -155,14 +141,14 @@ public class Emulator extends javax.swing.JPanel {
         
         ejecutarYsetear();
         
-        dibujoDA1.paintComponent(dibujoDA1.getGraphics());
+       
     }//GEN-LAST:event_playNFAMouseClicked
 
     private void ejecutarYsetear()
     {
         dibujador.ejecutar("temp__" + numero + "__" + actual + ".jpg");
-        dibujoDA1.SetImage(dibujador.getOutput() + "temp__" + numero + "__" + actual + ".jpg");
-        
+        Icon imagen = new ImageIcon(dibujador.getOutput() + "temp__" + numero + "__" + actual + ".jpg");
+        graficadorFA1.jLabel1.setIcon(imagen);
     }
 
     
@@ -178,13 +164,9 @@ public class Emulator extends javax.swing.JPanel {
             nextNFA.setEnabled(false);
     }//GEN-LAST:event_nextNFAMouseClicked
 
-private void dibujoDA1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dibujoDA1MouseEntered
-
-}//GEN-LAST:event_dibujoDA1MouseEntered
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cadena;
-    private gui.ventanas.DibujoDA dibujoDA1;
+    private gui.ventanas.GraficadorFA graficadorFA1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton nextNFA;
     private javax.swing.JButton playNFA;
