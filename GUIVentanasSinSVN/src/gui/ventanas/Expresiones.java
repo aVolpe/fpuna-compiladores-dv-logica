@@ -78,7 +78,8 @@ public class Expresiones extends javax.swing.JPanel {
 
     public void poblarInterno (AGuardar aGuardar){
         for (ExprAGuardar expr : aGuardar.getExpresiones()) {
-            Automatas nuevo = new Automatas();
+            //Automatas nuevo = new Automatas();
+            Automatas2 nuevo = new Automatas2();
             Alfabeto alfeto = aGuardar.getDefRegular().alfabeto;
             nuevo.setExprReg(expr.getNombre(), aGuardar.getDefRegular().alfabeto.toString(), expr.getExpresion().cadenaOriginal);
             NFA nfa = expr.getNfa();
@@ -97,7 +98,8 @@ public class Expresiones extends javax.swing.JPanel {
      
     public void poblar(AGuardar aGuardar) {
         for (ExprAGuardar expr : aGuardar.getExpresiones()) {
-            Automatas nuevo = new Automatas();
+            //Automatas nuevo = new Automatas();
+            Automatas2 nuevo = new Automatas2();
             Alfabeto alfeto = aGuardar.getDefRegular().alfabeto;
             nuevo.setExprReg(expr.getNombre(), aGuardar.getDefRegular().alfabeto.toString(), expr.getExpresion().cadenaOriginal);
             NFA nfa = expr.getNfa();

@@ -49,6 +49,7 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="focusable" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="jTable1" noResource="true"/>
           </Properties>
         </Component>

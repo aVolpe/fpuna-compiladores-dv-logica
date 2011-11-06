@@ -46,9 +46,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         //this.setUndecorated(true);
         //this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.pack();
         initComponents();
         this.setTitle("Compiladores - 2011");
-        this.pack();
+        //
 //        this.jLabel3.setVisible(false);
 //        this.alfDefinido.setVisible(false);
 //        
