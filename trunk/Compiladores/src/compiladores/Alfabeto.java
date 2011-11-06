@@ -18,7 +18,7 @@ public class Alfabeto {
 	public char[] letras;
         public Alfabetos alfabetos;
 
-	public Alfabeto() throws CaracterNoValidoEnExpresionRegularException, ExpresionIncorrectaException {
+	public Alfabeto() {
 		this.letras = "".toCharArray();
 	}
         
