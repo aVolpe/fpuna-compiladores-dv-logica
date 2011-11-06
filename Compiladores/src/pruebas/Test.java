@@ -164,7 +164,7 @@ public class Test {
 		prueba.setInicial(p1);
 		ArrayList temp = new ArrayList();
 		temp.add(p2);
-		prueba.setFinales(temp);
+		//prueba.setFinales(temp);
 		p1.addTransicion(p2, "a");
 		p1.addTransicion(p2, "b");
 		prueba.AgregarNodo(p1);
@@ -175,6 +175,13 @@ public class Test {
 		
 		dib.cargarFromDA(emulator);
 		dib.ejecutar("test.jpg");
+		
+		emulator.avanzar('a');
+		System.out.println("--------------" + emulator.getActuales());
+		
+		dib.cargarFromDA(emulator);
+		dib.ejecutar("test2.jpg");
+		System.out.println("--------------" + emulator.getActuales());
 	}
 
 }
