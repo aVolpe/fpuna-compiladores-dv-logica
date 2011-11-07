@@ -116,11 +116,10 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
             }
         });
 
-        comboBoxAlfabetos.setEnabled(false);
         comboBoxAlfabetos.setFocusable(false);
         comboBoxAlfabetos.setName("comboBoxAlfabetos"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(gui.ventanas.GrafosVentanasApp.class).getContext().getResourceMap(DefinicionRegular.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(DefinicionRegular.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
@@ -158,7 +157,6 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
                 return types [columnIndex];
             }
         });
-        jTable1.setEnabled(false);
         jTable1.setFocusable(false);
         jTable1.setName("jTable1"); // NOI18N
         jTable1.setRequestFocusEnabled(false);
