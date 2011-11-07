@@ -1,17 +1,6 @@
 package pruebas;
 
-import java.util.ArrayList;
-
-import archivos.AGuardar;
-import archivos.Guardador;
-import automatas.Dibujador;
-import automatas.EmuladorFA;
-import automatas.FA;
-import automatas.Nodo;
-
-import compiladores.Alfabeto;
-
-import enumeraciones.Alfabetos;
+import constantes.Direcciones;
 import excepciones.ExpresionIncorrectaException;
 import excepciones.IdentificadorNoEncontradoException;
 import excepciones.IdentificadorNoValidoException;
@@ -180,10 +169,14 @@ public class Test {
 //		dib.cargarFromDA(emulator);
 //		dib.ejecutar("test2.jpg");
 //		System.out.println("--------------" + emulator.getActuales());
-		AGuardar aguardar = new AGuardar();
-		Guardador guar = new Guardador();
-		aguardar = guar.Cargar("C:\\Users\\Arturo\\Documents\\aobp.xml");
-		System.out.println(aguardar.getExpresiones().get(2).getDfa());
+//		AGuardar aguardar = new AGuardar();
+//		Guardador guar = new Guardador();
+//		aguardar = guar.Cargar("C:\\Users\\Arturo\\Documents\\aobp.xml");
+//		System.out.println(aguardar.getExpresiones().get(2).getDfa());
+		
+//		Direcciones.path = "D:\\10mo Semestre\\WSCompiladores\\Graficos";
+		Direcciones.Cargar();
+		System.out.println(Direcciones.path);
 	}
 
 }
