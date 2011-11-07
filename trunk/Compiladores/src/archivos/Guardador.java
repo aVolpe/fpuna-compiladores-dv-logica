@@ -57,7 +57,7 @@ public class Guardador {
 
     public AGuardar Cargar(String nombre) {
         try {
-            FileReader cargaLectura = new FileReader(path + nombre);
+            FileReader cargaLectura = new FileReader(nombre);
             // if (!Carga_Lectura.ready()) return null;
             BufferedReader reader = new BufferedReader(cargaLectura);
             String linea = reader.readLine();
