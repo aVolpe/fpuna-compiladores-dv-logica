@@ -471,9 +471,9 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (IdentificadorNoValidoException ex) {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IdentificadorNoEncontradoException ex) {
-            Logger.getLogger(Automatas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Automatas2.class.getName()).log(Level.SEVERE, null, ex);
         } catch (CaracterNoValidoEnExpresionRegularException ex) {
-           Logger.getLogger(Automatas.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(Automatas2.class.getName()).log(Level.SEVERE, null, ex);
         }
      
 }//GEN-LAST:event_jButton6ActionPerformed
