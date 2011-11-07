@@ -6,14 +6,13 @@ public class ExpresionIncorrectaException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	public ExpresionIncorrectaException()
-	{
+
+	public ExpresionIncorrectaException() {
 		super("Expresion incorrecta");
 	}
-	public ExpresionIncorrectaException(String message)
-	{
+
+	public ExpresionIncorrectaException(String message) {
 		super(message);
 	}
-	
+
 }
