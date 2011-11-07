@@ -100,8 +100,8 @@ public class DefRegular {
 
 		// TODO una vez terminado se crea el feroz NFA
 		for (Entry<String, NFA> entry : nfas.entrySet()) {
-			System.out.println(entry.getKey());
-			System.out.println(entry.getValue());
+//			System.out.println(entry.getKey());
+//			System.out.println(entry.getValue());
 			listadeNfas.add(entry.getValue());
 
 		}
