@@ -32,8 +32,14 @@
                       <Component id="playNFA" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbParar" min="-2" pref="104" max="-2" attributes="0"/>
-                      <EmptySpace pref="306" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelAceptada" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="290" max="32767" attributes="0"/>
+                      <Component id="lpre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lact" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lpost" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="previusNFA" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -60,6 +66,9 @@
                   <Component id="playNFA" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="previusNFA" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbParar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lact" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lpre" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelAceptada" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -84,6 +93,7 @@
     <Component class="javax.swing.JButton" name="nextNFA">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="nextNFA.text"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="nextNFA" noResource="true"/>
       </Properties>
       <Events>
@@ -128,6 +138,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="labelAceptada.text"/>
         <Property name="name" type="java.lang.String" value="labelAceptada" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lpost">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="lpost.text"/>
+        <Property name="name" type="java.lang.String" value="lpost" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lact">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="lact.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="lact.text"/>
+        <Property name="name" type="java.lang.String" value="lact" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lpre">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="lpre.text"/>
+        <Property name="name" type="java.lang.String" value="lpre" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

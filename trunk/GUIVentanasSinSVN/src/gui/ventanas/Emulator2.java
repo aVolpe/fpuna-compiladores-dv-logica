@@ -13,6 +13,7 @@ package gui.ventanas;
 import automatas.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,6 +64,9 @@ public class Emulator2 extends javax.swing.JPanel {
         graficadorFA1 = new gui.ventanas.GraficadorFA();
         jbParar = new javax.swing.JButton();
         labelAceptada = new javax.swing.JLabel();
+        lpost = new javax.swing.JLabel();
+        lact = new javax.swing.JLabel();
+        lpre = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
 
@@ -75,6 +79,7 @@ public class Emulator2 extends javax.swing.JPanel {
         cadena.setName("cadena"); // NOI18N
 
         nextNFA.setText(resourceMap.getString("nextNFA.text")); // NOI18N
+        nextNFA.setEnabled(false);
         nextNFA.setName("nextNFA"); // NOI18N
         nextNFA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,6 +118,16 @@ public class Emulator2 extends javax.swing.JPanel {
         labelAceptada.setText(resourceMap.getString("labelAceptada.text")); // NOI18N
         labelAceptada.setName("labelAceptada"); // NOI18N
 
+        lpost.setText(resourceMap.getString("lpost.text")); // NOI18N
+        lpost.setName("lpost"); // NOI18N
+
+        lact.setFont(resourceMap.getFont("lact.font")); // NOI18N
+        lact.setText(resourceMap.getString("lact.text")); // NOI18N
+        lact.setName("lact"); // NOI18N
+
+        lpre.setText(resourceMap.getString("lpre.text")); // NOI18N
+        lpre.setName("lpre"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,8 +144,14 @@ public class Emulator2 extends javax.swing.JPanel {
                         .addComponent(playNFA, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbParar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelAceptada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                        .addComponent(lpre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lact)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lpost)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(previusNFA)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -152,19 +173,28 @@ public class Emulator2 extends javax.swing.JPanel {
                     .addComponent(playNFA)
                     .addComponent(previusNFA)
                     .addComponent(jbParar)
+                    .addComponent(lpost)
+                    .addComponent(lact)
+                    .addComponent(lpre)
                     .addComponent(labelAceptada))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void playNFAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playNFAMouseClicked
+
+        if (cadena.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese una cadena para emular");
+            return;
+        }
         this.iniciar();
     }//GEN-LAST:event_playNFAMouseClicked
 
     private void ejecutarYsetear() {
-        dibujador.ejecutar("temp__" + numero + "__" + actual + ".jpg");
-        Icon imagen = new ImageIcon(dibujador.getOutput() + "temp__" + numero + "__" + actual + ".jpg");
+        dibujador.ejecutar("temp__" + numero + "__" + actual + aEmular.getActuales() + ".jpg");
+        Icon imagen = new ImageIcon(dibujador.getOutput() + "temp__" + numero + "__" + actual + aEmular.getActuales() + ".jpg");
         graficadorFA1.jLabel1.setIcon(imagen);
+
     }
 
     private void iniciar() {
@@ -183,6 +213,7 @@ public class Emulator2 extends javax.swing.JPanel {
         } else {
             labelAceptada.setText("Cadena no Aceptada");
         }
+        actualizarLabel();
     }
 
     private void parar() {
@@ -195,44 +226,66 @@ public class Emulator2 extends javax.swing.JPanel {
     }
 
     private void anterior() {
+        if (actual == 0){
+            previusNFA.setEnabled(false);
+            return;
+            
+        }
         actual--;
 
         aEmular.retroceder();
         ejecutarYsetear();
 
-        
+
 
         if (actual == 0) {
             previusNFA.setEnabled(false);
             //nextNFA.setEnabled();
         }
-        if (actual != cadena.getText().length())
-        {
+        if (actual != cadena.getText().length()) {
             nextNFA.setEnabled(true);
         }
+        actualizarLabel();
+        // System.out.println(actual + " - " + cadena.getText().charAt(actual));
+    }
+
+    private void actualizarLabel() {
+        if (actual == 0) 
+            lpre.setText("");
+        else 
+            lpre.setText(cadena.getText().substring(0, actual));
         
-       // System.out.println(actual + " - " + cadena.getText().charAt(actual));
+        lact.setText(cadena.getText().charAt(actual) + "");
+        
+        if (actual != cadena.getText().length())
+            lpost.setText(cadena.getText().substring(actual + 1));
+        else
+            lpost.setText("");
     }
 
     private void siguiente() {
         //System.out.println("enra: " + actual + " - " + cadena.getText().charAt(actual));
-        
+
         actual++;
 
-        aEmular.avanzar(cadena.getText().charAt(actual - 1));
-        ejecutarYsetear();
-
-        //System.out.println(cadena.getText().length() - actual);
-
-        
-        if (actual == cadena.getText().length()) {
+        boolean avanzo = aEmular.avanzar(cadena.getText().charAt(actual - 1));
+        if (avanzo) {
+            //System.out.println(aEmular.getActuales());
+            ejecutarYsetear();
+        } else {
             nextNFA.setEnabled(false);
         }
-        if (actual != 0)
-        {
+        actualizarLabel();
+        //System.out.println(cadena.getText().length() - actual);
+        System.out.println(actual + " de " + cadena.getText().length());
+
+        if (actual == cadena.getText().length() - 1) {
+            nextNFA.setEnabled(false);
+        }
+        if (actual != 0) {
             previusNFA.setEnabled(true);
         }
-       // System.out.println("sale " + actual + " - " + cadena.getText().charAt(actual));
+        // System.out.println("sale " + actual + " - " + cadena.getText().charAt(actual));
     }
     private void nextNFAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextNFAMouseClicked
         this.siguiente();
@@ -251,6 +304,9 @@ public class Emulator2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbParar;
     private javax.swing.JLabel labelAceptada;
+    private javax.swing.JLabel lact;
+    private javax.swing.JLabel lpost;
+    private javax.swing.JLabel lpre;
     private javax.swing.JButton nextNFA;
     private javax.swing.JButton playNFA;
     private javax.swing.JButton previusNFA;
