@@ -137,6 +137,11 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
         setName("Form"); // NOI18N
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.addHierarchyListener(new java.awt.event.HierarchyListener() {
@@ -147,7 +152,7 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
 
         comboBoxAlfabetos.setName("comboBoxAlfabetos"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(gui.ventanas.GrafosVentanasApp.class).getContext().getResourceMap(Definiciones.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(Definiciones.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
@@ -336,7 +341,7 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
                             .addComponent(alfDefinido, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -589,6 +594,13 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         // y a trabajar con fichero ....
 
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        System.out.println(evt.getButton());
+        if (evt.getButton() == 2 && jTabbedPane1.getSelectedIndex() != 0)
+            jTabbedPane1.remove(jTabbedPane1.getSelectedIndex());
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
   
 
