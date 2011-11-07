@@ -209,7 +209,7 @@ public class DFA extends FA {
 		// por cada conbinacion //cambiar por actual y while
 		Iterator<NombreyNodos> iterador = actuales.iterator();
 		NombreyNodos actual = iterador.next();
-		int i = 0;
+//		int i = 0;
 		while (actual != null) {
 
 //			System.out.println("Iteracion : " + i++);

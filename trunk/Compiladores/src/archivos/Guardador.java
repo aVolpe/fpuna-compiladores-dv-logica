@@ -14,7 +14,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class Guardador {
 
-    String path = "C:\\eclipse\\graficos\\";
+   
     XStream xs;
 
     public Guardador() {
@@ -28,7 +28,7 @@ public class Guardador {
 
         FileWriter cargaEscritura;
         try {
-            cargaEscritura = new FileWriter(path + nombre);
+            cargaEscritura = new FileWriter(nombre);
             BufferedWriter writer = new BufferedWriter(cargaEscritura);
             String xml = xs.toXML(aguardar);
             writer.write(xml);
