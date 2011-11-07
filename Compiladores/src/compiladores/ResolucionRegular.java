@@ -225,7 +225,8 @@ public class ResolucionRegular {
 				continue;
 			}
 		
-			if (letra == '(' && !especial) {
+			if (letra == '(' ) {
+                           
 				openParethesis=true;
 				if (parentesis == 0)
 					openParentesisAt = i;
@@ -235,7 +236,7 @@ public class ResolucionRegular {
 			}
 			
 		
-			if (letra == ')' && !especial) {
+			if (letra == ')' ) {
 				parentesis--;
 				if (parentesis!=0){
 					openParethesis = true;
@@ -320,7 +321,7 @@ public class ResolucionRegular {
 			if (letra == '|' && !openParethesis && !especial) {
 				if ((i+1)<regLength){
 					char siguiente = cadena.charAt(i+1);
-					if (Alfabeto.SEspeciales.contains("" + siguiente) )throw new CaracterNoValidoEnExpresionRegularException("Expresion Mal formada: " + cadena);
+					if (Alfabeto.SEspeciales.contains("" + siguiente) && !(siguiente=='\\') )throw new CaracterNoValidoEnExpresionRegularException("Expresion Mal formada: " + cadena);
 //					String hola = cadena.substring(i+1);
 					if (nfa!= null)
 						nfa = NFA.ConstruirNFA(Thompson.Y,nfa, NFA.ConstruirNFA(Thompson.O, nfaUnario,generarNfa(new ExprRegular(cadena.substring(i + 1),reg.alfabeto,!openParethesis))));
