@@ -5,29 +5,28 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
+import constantes.Direcciones;
+
 public class Dibujador {
 
 
 
-	String path = "C:\\Program Files\\Graphviz 2.28\\bin\\dot.exe";
-	String output = "C:\\eclipse\\graficos\\";
-	//final String fOutput = "C:\\eclipse\\graficos\\";
-	String input = "C:\\eclipse\\graficos\\grafo.txt";
+	String path;
+	String output;
+	String input;
 
 
 	private FA automata;
 	private EmuladorFA emulado;
 
-	public Dibujador(String path, String input) {
-		this.path = path;
-		this.input = input;
-	}
 
-	public Dibujador(String nombre) {
-		this.output = output + nombre;
-	}
 
 	public Dibujador() {
+		Direcciones.Cargar();
+		path = Direcciones.dot;
+		output = Direcciones.path;
+		input = output + "grafo.txt";
+		
 		emulado = null;
 	}
 
