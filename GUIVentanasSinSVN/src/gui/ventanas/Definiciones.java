@@ -485,7 +485,7 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             + "\n Por favor redefina su alfabeto");
 
                 }
-            } else {
+            } else if (alf==null) {
                 JOptionPane.showMessageDialog(this, "Seleccione o defina un Alfabeto");
             }
             
