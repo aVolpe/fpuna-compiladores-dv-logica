@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import compiladores.Alfabeto;
 
-import constantes.letras;
+import constantes.Letras;
 import enumeraciones.Thompson;
 
 public class NFA extends FA {
@@ -78,7 +78,7 @@ public class NFA extends FA {
 			return (aRetKleenePlus);
 		}
 		if (t == Thompson.Opcional) {
-			NFA optional = CrearO(nfaClon, ConstruirNFA(letras.empty));
+			NFA optional = CrearO(nfaClon, ConstruirNFA(Letras.empty));
 			optional.renombrarNodos();
 			return (optional);
 		}
@@ -91,15 +91,15 @@ public class NFA extends FA {
 		Nodo nFinal = new Nodo("F");
 
 		// se apunta a los estados iniciales
-		nInicial.addTransicion(nfa1.inicial, letras.empty);
-		nInicial.addTransicion(nfa2.inicial, letras.empty);
+		nInicial.addTransicion(nfa1.inicial, Letras.empty);
+		nInicial.addTransicion(nfa2.inicial, Letras.empty);
 
 		// los finales apuntan al nuevo final
 		for (Nodo nodo : nfa1.finales) {
-			nodo.addTransicion(nFinal, letras.empty);
+			nodo.addTransicion(nFinal, Letras.empty);
 		}
 		for (Nodo nodo : nfa2.finales) {
-			nodo.addTransicion(nFinal, letras.empty);
+			nodo.addTransicion(nFinal, Letras.empty);
 		}
 		aRet.inicial = nInicial;
 		aRet.finales = new ArrayList<Nodo>();
@@ -127,9 +127,9 @@ public class NFA extends FA {
 		if (nfa1.finales.size() > 1) {
 			Nodo final1 = new Nodo("F1");
 			for (Nodo nodo : nfa1.finales) {
-				nodo.addTransicion(final1, letras.empty);
+				nodo.addTransicion(final1, Letras.empty);
 			}
-			final1.addTransicion(nfa2.inicial, letras.empty);
+			final1.addTransicion(nfa2.inicial, Letras.empty);
 			aRet.nodos.add(final1);
 		}
 		if (nfa1.finales.size() == 1){
@@ -138,7 +138,7 @@ public class NFA extends FA {
                     nfa2.nodos.remove(nfa2.inicial);
                     nfa2.inicial = nodoFinal1;
                 }
-                    //nfa1.finales.get(0).addTransicion(nfa2.inicial, letras.empty);
+                    //nfa1.finales.get(0).addTransicion(nfa2.inicial, Letras.empty);
 
 		aRet.nodos.addAll(nfa2.nodos);
 
@@ -151,12 +151,12 @@ public class NFA extends FA {
 		NFA aRet = new NFA(nfa.alfabeto);
 		Nodo nInicial = new Nodo("I");
 		Nodo nFinal = new Nodo("F");
-		nInicial.addTransicion(nFinal, letras.empty);
-		nInicial.addTransicion(clon.inicial, letras.empty);
+		nInicial.addTransicion(nFinal, Letras.empty);
+		nInicial.addTransicion(clon.inicial, Letras.empty);
 
 		for (Nodo nodo : clon.finales) {
-			nodo.addTransicion(nFinal, letras.empty);
-			nodo.addTransicion(clon.inicial, letras.empty);
+			nodo.addTransicion(nFinal, Letras.empty);
+			nodo.addTransicion(clon.inicial, Letras.empty);
 		}
 
 		aRet.inicial = nInicial;

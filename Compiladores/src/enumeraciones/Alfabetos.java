@@ -23,7 +23,7 @@ public enum Alfabetos {
         if (s.equalsIgnoreCase("Numeros")) {
             return Alfabetos.NUMEROS;
         }
-        if (s.equalsIgnoreCase("MAY_MIN_NUMEROS")) {
+        if (s.equalsIgnoreCase("Todas las letras y numeros")) {
             return Alfabetos.MAY_MIN_NUMEROS;
         }
         if (s.equalsIgnoreCase("ESPECIALES")) {
@@ -37,30 +37,30 @@ public enum Alfabetos {
         }
         return null;
     }
-     
-      public String toString(Alfabetos s) {
-        if (s.equals(Alfabetos.LETRAS_MAYUSCULAS)) {
+     @Override
+      public String toString() {
+        if (this.equals(Alfabetos.LETRAS_MAYUSCULAS)) {
             return  "Letras Mayusculas";
         }
-        if (s.equals(Alfabetos.LETRAS_MINUSCULAS)) {
+        if (this.equals(Alfabetos.LETRAS_MINUSCULAS)) {
             return "Letras Minusculas";
         }
-        if (s.equals( Alfabetos.LETRAS_TODAS)) {
+        if (this.equals( Alfabetos.LETRAS_TODAS)) {
             return "Todas las Letras";
         }
-        if (s.equals(Alfabetos.NUMEROS)) {
+        if (this.equals(Alfabetos.NUMEROS)) {
             return "Numeros";
         }
-        if (s.equals(Alfabetos.MAY_MIN_NUMEROS)) {
-            return "MAY_MIN_NUMEROS";
+        if (this.equals(Alfabetos.MAY_MIN_NUMEROS)) {
+            return "Todas las letras y numeros";
         }
-        if (s.equals(Alfabetos.ESPECIALES)) {
+        if (this.equals(Alfabetos.ESPECIALES)) {
             return "ESPECIALES";
         }
-        if (s.equals(Alfabetos.AYB)) {
+        if (this.equals(Alfabetos.AYB)) {
             return "a y b";
         }
-        if (s.equals(Alfabetos.CyU)) {
+        if (this.equals(Alfabetos.CyU)) {
             return "0 y 1";
         }
         return null;

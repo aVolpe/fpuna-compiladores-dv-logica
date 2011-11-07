@@ -8,9 +8,12 @@ import java.util.Map.Entry;
 public class Dibujador {
 
 
-	String path = "D:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe";
-	String output = "D:\\10mo Semestre\\WSCompiladores\\Graficos\\";
-	String input = "D:\\10mo Semestre\\WSCompiladores\\Graficos\\grafo.txt";
+
+	String path = "C:\\Program Files\\Graphviz 2.28\\bin\\dot.exe";
+	String output = "C:\\eclipse\\graficos\\";
+	//final String fOutput = "C:\\eclipse\\graficos\\";
+	String input = "C:\\eclipse\\graficos\\grafo.txt";
+
 
 	private FA automata;
 	private EmuladorFA emulado;

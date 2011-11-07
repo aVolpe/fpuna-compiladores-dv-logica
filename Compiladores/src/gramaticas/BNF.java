@@ -25,7 +25,7 @@ public class BNF {
 			if (automata.getFinales().contains(nodo)) 
 			{
 				if (valor != "") valor += " | ";
-				valor += constantes.letras.empty;
+				valor += constantes.Letras.empty;
 			}
 			if (nodo.equals(automata.getInicial()))
 				clave += "{INICIAL}";

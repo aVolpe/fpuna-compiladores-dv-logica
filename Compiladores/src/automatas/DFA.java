@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import constantes.letras;
+import constantes.Letras;
 
 public class DFA extends FA {
 
@@ -22,7 +22,7 @@ public class DFA extends FA {
 	public DFA(NFA nfa) {
 
 		this.alfabeto = nfa.alfabeto;
-		alfabeto.eliminarEspeciales();
+		//alfabeto.eliminarEspeciales();
 		NFA matrizCompleta = nfa.clonar();
 		// System.out.println(matrizCompleta);
 		for (Nodo nodo : matrizCompleta.nodos) {
@@ -34,12 +34,12 @@ public class DFA extends FA {
 		ArrayList<Nodo> auxiliares = new ArrayList<Nodo>();
 		Nodo primero = new Nodo("0");
 		primero.addSiguientes(
-				matrizCompleta.inicial.apuntados.get(letras.empty),
-				letras.empty);
+				matrizCompleta.inicial.apuntados.get(Letras.empty),
+				Letras.empty);
 
 		boolean esInicial = false;
 		boolean esFinal = false;
-		for (Nodo apuntado : primero.apuntados.get(letras.empty)) {
+		for (Nodo apuntado : primero.apuntados.get(Letras.empty)) {
 			if (apuntado.equals(matrizCompleta.inicial))
 				esInicial = true;
 			if (matrizCompleta.finales.contains(apuntado))
@@ -62,19 +62,19 @@ public class DFA extends FA {
 			Nodo actual = marcar(nodo);
 
 			for (char letra : alfabeto.letras) {
-				if (letras.empty.equals(letra + ""))
+				if (Letras.empty.equals(letra + ""))
 					continue;
-				emulador.actuales = nodo.getApuntados().get(letras.empty);
+				emulador.actuales = nodo.getApuntados().get(Letras.empty);
 				emulador.avanzar(letra);
 				if (emulador.actuales == null || emulador.actuales.size() == 0)
 					continue;
 
 				ArrayList<Nodo> resulAvanzar = new ArrayList<Nodo>();
 				for (Nodo resul : emulador.actuales) {
-					if (resul.apuntados.get(letras.empty) == null
-							|| resul.apuntados.get(letras.empty).size() == 0)
+					if (resul.apuntados.get(Letras.empty) == null
+							|| resul.apuntados.get(Letras.empty).size() == 0)
 						continue;
-					for (Nodo apuntado : resul.apuntados.get(letras.empty)) {
+					for (Nodo apuntado : resul.apuntados.get(Letras.empty)) {
 						if (resulAvanzar.contains(apuntado))
 							continue;
 						resulAvanzar.add(apuntado);
@@ -82,12 +82,12 @@ public class DFA extends FA {
 				}
 
 				Nodo nuevo = new Nodo(nodoActual + "");
-				nuevo.apuntados.put(letras.empty, resulAvanzar);
+				nuevo.apuntados.put(Letras.empty, resulAvanzar);
 				nodoActual++;
 
 				esInicial = false;
 				esFinal = false;
-				for (Nodo apuntado : nuevo.apuntados.get(letras.empty)) {
+				for (Nodo apuntado : nuevo.apuntados.get(Letras.empty)) {
 					if (apuntado.equals(matrizCompleta.inicial))
 						esInicial = true;
 					if (matrizCompleta.finales.contains(apuntado))
@@ -153,27 +153,27 @@ public class DFA extends FA {
 	private void hallarEmptys(Nodo papa) {
 		ArrayList<Nodo> aRet = new ArrayList<Nodo>();
 		aRet.add(papa);
-		if (papa.apuntados.get(letras.empty) == null
-				|| papa.apuntados.get(letras.empty).size() == 0) {
+		if (papa.apuntados.get(Letras.empty) == null
+				|| papa.apuntados.get(Letras.empty).size() == 0) {
 
-			papa.apuntados.put(letras.empty, aRet);
+			papa.apuntados.put(Letras.empty, aRet);
 		}
 
-		for (Nodo nodo : papa.apuntados.get(letras.empty)) {
+		for (Nodo nodo : papa.apuntados.get(Letras.empty)) {
 			if (nodo.equals(papa))
 				continue;
 			hallarEmptys(nodo);
 		}
 
-		for (Nodo nodo : papa.apuntados.get(letras.empty)) {
+		for (Nodo nodo : papa.apuntados.get(Letras.empty)) {
 			if (nodo.equals(papa))
 				continue;
-			if (nodo.apuntados.get(letras.empty) == null
-					|| nodo.apuntados.get(letras.empty).size() == 0) {
+			if (nodo.apuntados.get(Letras.empty) == null
+					|| nodo.apuntados.get(Letras.empty).size() == 0) {
 				aRet.add(nodo);
 				continue;
 			}
-			for (Nodo apuntado : nodo.apuntados.get(letras.empty)) {
+			for (Nodo apuntado : nodo.apuntados.get(Letras.empty)) {
 				if (apuntado.equals(papa))
 					continue;
 				if (!aRet.contains(apuntado))
@@ -183,7 +183,7 @@ public class DFA extends FA {
 				aRet.add(nodo);
 		}
 
-		papa.apuntados.put(letras.empty, aRet);
+		papa.apuntados.put(Letras.empty, aRet);
 		return;
 	}
 
@@ -211,8 +211,10 @@ public class DFA extends FA {
 		NombreyNodos actual = iterador.next();
 		int i = 0;
 		while (actual != null) {
+
 //			System.out.println("Iteracion : " + i++);
 //			NombreyNodos.imprimirLista(actuales);
+
 
 			// por cada nodo del actual
 			ArrayList<NombreyNodos> spliteados = new ArrayList<NombreyNodos>();

@@ -3,7 +3,7 @@ package automatas;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import constantes.letras;
+import constantes.Letras;
 
 public class Nodo {
 
@@ -114,14 +114,14 @@ public class Nodo {
 	}
 
 	public static boolean compararEmptys(Nodo nodo1, Nodo nodo2) {
-		if (nodo1.apuntados.get(letras.empty) == null
-				&& nodo2.apuntados.get(letras.empty) == null)
+		if (nodo1.apuntados.get(Letras.empty) == null
+				&& nodo2.apuntados.get(Letras.empty) == null)
 			return true;
-		if (nodo1.apuntados.get(letras.empty).size() != nodo2.apuntados.get(
-				letras.empty).size())
+		if (nodo1.apuntados.get(Letras.empty).size() != nodo2.apuntados.get(
+				Letras.empty).size())
 			return false;
-		for (Nodo nodoApunta1 : nodo1.apuntados.get(letras.empty)) {
-			if (!nodo2.apuntados.get(letras.empty).contains(nodoApunta1))
+		for (Nodo nodoApunta1 : nodo1.apuntados.get(Letras.empty)) {
+			if (!nodo2.apuntados.get(Letras.empty).contains(nodoApunta1))
 				return false;
 		}
 		return true;
