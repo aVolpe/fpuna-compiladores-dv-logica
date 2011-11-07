@@ -2,6 +2,8 @@ package pruebas;
 
 import java.util.ArrayList;
 
+import archivos.AGuardar;
+import archivos.Guardador;
 import automatas.Dibujador;
 import automatas.EmuladorFA;
 import automatas.FA;
@@ -154,30 +156,34 @@ public class Test {
 //		dib.ejecutar("aayobDFAm.jpg");
 //				
 		
-		FA prueba = new FA(new Alfabeto(Alfabetos.AYB));
-		Nodo p1 = new Nodo("P1");
-		Nodo p2 = new Nodo("P2");
-		prueba.setInicial(p1);
-		ArrayList<Nodo> temp = new ArrayList<Nodo>();
-		temp.add(p2);
-		prueba.setFinales(temp);
-		p1.addTransicion(p2, "a");
-		p1.addTransicion(p2, "b");
-		prueba.AgregarNodo(p1);
-		prueba.AgregarNodo(p2);
-		EmuladorFA emulator = new EmuladorFA(prueba);
-		System.out.println(emulator);
-		Dibujador dib = new Dibujador();
-		
-		dib.cargarFromDA(emulator);
-		dib.ejecutar("test.jpg");
-		
-		emulator.avanzar('a');
-		System.out.println("--------------" + emulator.getActuales());
-		
-		dib.cargarFromDA(emulator);
-		dib.ejecutar("test2.jpg");
-		System.out.println("--------------" + emulator.getActuales());
+//		FA prueba = new FA(new Alfabeto(Alfabetos.AYB));
+//		Nodo p1 = new Nodo("P1");
+//		Nodo p2 = new Nodo("P2");
+//		prueba.setInicial(p1);
+//		ArrayList<Nodo> temp = new ArrayList<Nodo>();
+//		temp.add(p2);
+//		prueba.setFinales(temp);
+//		p1.addTransicion(p2, "a");
+//		p1.addTransicion(p2, "b");
+//		prueba.AgregarNodo(p1);
+//		prueba.AgregarNodo(p2);
+//		EmuladorFA emulator = new EmuladorFA(prueba);
+//		System.out.println(emulator);
+//		Dibujador dib = new Dibujador();
+//		
+//		dib.cargarFromDA(emulator);
+//		dib.ejecutar("test.jpg");
+//		
+//		emulator.avanzar('a');
+//		System.out.println("--------------" + emulator.getActuales());
+//		
+//		dib.cargarFromDA(emulator);
+//		dib.ejecutar("test2.jpg");
+//		System.out.println("--------------" + emulator.getActuales());
+		AGuardar aguardar = new AGuardar();
+		Guardador guar = new Guardador();
+		aguardar = guar.Cargar("C:\\Users\\Arturo\\Documents\\aobp.xml");
+		System.out.println(aguardar.getExpresiones().get(2).getDfa());
 	}
 
 }
