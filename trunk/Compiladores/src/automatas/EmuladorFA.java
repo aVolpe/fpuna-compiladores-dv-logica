@@ -120,7 +120,8 @@ public class EmuladorFA extends FA {
 		return acepta();
 	}
 
-	public void avanzar(char letra) {
+	public boolean avanzar(char letra) {
+		boolean avanzo = false;
 		anteriores.push(actuales);
 		ArrayList<Nodo> nActuales = new ArrayList<Nodo>();
 		for (Nodo nodo : actuales) {
@@ -134,6 +135,7 @@ public class EmuladorFA extends FA {
 						if (nActuales.contains(apuntado))
 							continue;
 						nActuales.add(apuntado);
+						avanzo = true;
 					}
 					break;
 				}
@@ -146,10 +148,11 @@ public class EmuladorFA extends FA {
 //				}
 			if (nodo.apuntados.get(letras.empty) != null)
 				for (Nodo apuntado : nodo.apuntados.get(letras.empty)) {
-					avanzar(letra, apuntado, nActuales);
+					avanzar(letra, apuntado, nActuales, avanzo);
 				}
 		}
 		actuales = nActuales;
+		return avanzo;
 
 	}
 
@@ -179,7 +182,7 @@ public class EmuladorFA extends FA {
 	 *            actuales
 	 */
 
-	public void avanzar(char letra, Nodo partir, ArrayList<Nodo> nActuales) {
+	public void avanzar(char letra, Nodo partir, ArrayList<Nodo> nActuales, boolean avanzo) {
 		if (partir.apuntados == null)
 			return;
 		if (partir.apuntados.get(letra + "") != null)
@@ -187,12 +190,13 @@ public class EmuladorFA extends FA {
 				if (nActuales.contains(apuntado))
 					continue;
 				nActuales.add(apuntado);
+				avanzo = true;
 			}
 		if (partir.apuntados.get(letras.empty) != null)
 			for (Nodo apuntado : partir.apuntados.get(letras.empty)) {
 				if (apuntado.equals(partir))
 					continue;
-				avanzar(letra, apuntado, nActuales);
+				avanzar(letra, apuntado, nActuales, avanzo);
 			}
 	}
 
@@ -238,6 +242,7 @@ public class EmuladorFA extends FA {
 	public boolean acepta(Nodo nodo) {
 		if (finales.contains(nodo))
 			return true;
+                if (nodo.apuntados.get(letras.empty) == null) return false;
 		for (Nodo apuntado : nodo.apuntados.get(letras.empty)) {
 			if (finales.contains(apuntado))
 				return true;
