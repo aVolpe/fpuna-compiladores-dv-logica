@@ -24,6 +24,7 @@ public class ResolucionRegular {
 			char letra = cadena.charAt(k);
 			if (letra == '['){
     			agrupadorCount++;
+                        if (!cadena.substring(k+1).contains("]")) throw new ExpresionIncorrectaException("Expresion mal formada");
     			agrupador = true;
     			continue;
     		}
@@ -226,7 +227,6 @@ public class ResolucionRegular {
 			}
 		
 			if (letra == '(' ) {
-                           
 				openParethesis=true;
 				if (parentesis == 0)
 					openParentesisAt = i;
