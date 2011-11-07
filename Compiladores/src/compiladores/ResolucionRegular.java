@@ -59,7 +59,7 @@ public class ResolucionRegular {
     					}
     				}else if (Alfabeto.SLetrasMay.contains(inicioSecuencia)){ // letrasmay
     					if (Alfabeto.SLetrasMay.contains(finalSecuencia)){ 
-    						aceptado = Alfabeto.SLetrasMin.substring(Alfabeto.SLetrasMin.indexOf(inicioSecuencia),Alfabeto.SLetrasMin.indexOf(finalSecuencia)+1);
+    						aceptado = Alfabeto.SLetrasMay.substring(Alfabeto.SLetrasMay.indexOf(inicioSecuencia),Alfabeto.SLetrasMay.indexOf(finalSecuencia)+1);
     						for (int j = 0;  j<aceptado.toCharArray().length-1; j++) {
     							String op = String.valueOf(aceptado.charAt(j));
 								String opARem = "";
@@ -71,7 +71,7 @@ public class ResolucionRegular {
     					}
     				}else if (Alfabeto.SNumeros.contains(inicioSecuencia)){ // numeros
     					if (Alfabeto.SNumeros.contains(finalSecuencia)){ 
-    						aceptado = Alfabeto.SLetrasMin.substring(Alfabeto.SLetrasMin.indexOf(inicioSecuencia),Alfabeto.SLetrasMin.indexOf(finalSecuencia)+1);
+    						aceptado = Alfabeto.SNumeros.substring(Alfabeto.SNumeros.indexOf(inicioSecuencia),Alfabeto.SNumeros.indexOf(finalSecuencia)+1);
     						for (int j = 0;  j<aceptado.toCharArray().length-1; j++) {
     							String op = String.valueOf(aceptado.charAt(j));
 								String opARem = "";
