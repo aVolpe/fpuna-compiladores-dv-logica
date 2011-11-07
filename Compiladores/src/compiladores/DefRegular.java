@@ -16,19 +16,18 @@ import excepciones.ParentesisDesvalanceadosException;
 
 public class DefRegular {
 	// IMPUT
-	Consola con;
-        private String name;
-
+	
+	private String name;
 
 	// VECTOR DE EXPRESIONES REGULARES
 	public HashMap<String, ExprRegular> regs;
 
-        public Alfabeto alfabeto;
+	public Alfabeto alfabeto;
 
 	public DefRegular(Alfabeto alfabeto) {
 		regs = new HashMap<String, ExprRegular>();
 		this.alfabeto = alfabeto;
-           
+
 	}
 
 	public void poblar(List<String> expresiones)
@@ -76,7 +75,9 @@ public class DefRegular {
 	public Map<String, NFA> generarNFAs()
 			throws IdentificadorNoEncontradoException,
 			LetraNoPerteneceAlfabeto, ParentesisDesvalanceadosException,
-			IdentificadorNoValidoException, CaracterNoValidoEnExpresionRegularException, ExpresionIncorrectaException {
+			IdentificadorNoValidoException,
+			CaracterNoValidoEnExpresionRegularException,
+			ExpresionIncorrectaException {
 		// Este es el metodote..
 
 		HashMap<String, NFA> nfas = new HashMap<String, NFA>();
@@ -90,10 +91,12 @@ public class DefRegular {
 			// Si tiene una referencia arma la referencia primero
 			if (entry.getValue().tieneSubExpr) {
 				calcularDependencias(entry.getKey(), nfas);
-			}else{
+			} else {
 				ExprRegular expresionAgenerar = entry.getValue();
-				expresionAgenerar = ResolucionRegular.resoverCorchetes(expresionAgenerar);
-				nfas.put(entry.getKey(), ResolucionRegular.generarNfa(expresionAgenerar));
+				expresionAgenerar = ResolucionRegular
+						.resoverCorchetes(expresionAgenerar);
+				nfas.put(entry.getKey(),
+						ResolucionRegular.generarNfa(expresionAgenerar));
 			}
 
 		}
@@ -107,15 +110,13 @@ public class DefRegular {
 
 		return nfas;
 	}
-	
-	
-
-	
 
 	public void calcularDependencias(String nombre, HashMap<String, NFA> nfas)
 			throws IdentificadorNoEncontradoException,
 			LetraNoPerteneceAlfabeto, ParentesisDesvalanceadosException,
-			IdentificadorNoValidoException, CaracterNoValidoEnExpresionRegularException, ExpresionIncorrectaException {
+			IdentificadorNoValidoException,
+			CaracterNoValidoEnExpresionRegularException,
+			ExpresionIncorrectaException {
 		if (nombre == null || nfas == null)
 			return;
 		if (!regs.containsKey(nombre)) {
@@ -142,7 +143,8 @@ public class DefRegular {
 		for (char letra : expresion.cadena.toCharArray()) {
 
 			if (letra == '}' && identificador) {
-				cadenaNueva = concatenarIdentificador(cadenaNueva, regs.get(nIdentificador).cadena);
+				cadenaNueva = concatenarIdentificador(cadenaNueva,
+						regs.get(nIdentificador).cadena);
 				identificador = false;
 				continue;
 			}
@@ -152,7 +154,7 @@ public class DefRegular {
 				continue;
 			}
 			if (letra == '{') {
-				nIdentificador="";
+				nIdentificador = "";
 				identificador = true;
 				continue;
 			}
@@ -180,17 +182,17 @@ public class DefRegular {
 		}
 
 		cadenaARet += expNfa + "(" + expNfaOtro + ")";
-		
+
 		return cadenaARet;
 
 	}
-        
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
 
 }
