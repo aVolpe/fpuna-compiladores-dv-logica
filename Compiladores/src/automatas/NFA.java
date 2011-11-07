@@ -37,7 +37,6 @@ public class NFA extends FA {
 		return aRet;
 	}
 
-	
 	public static NFA ConstruirNFA(String letra, Alfabeto alfabeto) {
 		NFA aRet = new NFA(alfabeto);
 
@@ -50,7 +49,7 @@ public class NFA extends FA {
 		aRet.finales.add(nFinal);
 		return aRet;
 	}
-	
+
 	public static NFA ConstruirNFA(Thompson t, NFA nfa1, NFA nfa2) {
 		// TODO AGREGAR VALIDACION DE ALFABETOS
 
@@ -66,7 +65,7 @@ public class NFA extends FA {
 	}
 
 	public static NFA ConstruirNFA(Thompson t, NFA nfa) {
-		//System.out.println(nfa);
+		// System.out.println(nfa);
 		NFA nfaClon = nfa.clonar();
 		if (t == Thompson.Kleene)
 			return CrearKleene(nfaClon);
@@ -132,13 +131,13 @@ public class NFA extends FA {
 			final1.addTransicion(nfa2.inicial, Letras.empty);
 			aRet.nodos.add(final1);
 		}
-		if (nfa1.finales.size() == 1){
-                    Nodo nodoFinal1 = nfa1.finales.get(0);
-                    nodoFinal1.setApuntados(nfa2.inicial.apuntados);
-                    nfa2.nodos.remove(nfa2.inicial);
-                    nfa2.inicial = nodoFinal1;
-                }
-                    //nfa1.finales.get(0).addTransicion(nfa2.inicial, Letras.empty);
+		if (nfa1.finales.size() == 1) {
+			Nodo nodoFinal1 = nfa1.finales.get(0);
+			nodoFinal1.setApuntados(nfa2.inicial.apuntados);
+			nfa2.nodos.remove(nfa2.inicial);
+			nfa2.inicial = nodoFinal1;
+		}
+		// nfa1.finales.get(0).addTransicion(nfa2.inicial, Letras.empty);
 
 		aRet.nodos.addAll(nfa2.nodos);
 
@@ -170,7 +169,6 @@ public class NFA extends FA {
 
 		return aRet;
 	}
-
 
 	public NFA clonar() {
 		NFA da = new NFA(alfabeto);
