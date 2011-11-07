@@ -38,24 +38,26 @@ public class Automatas extends javax.swing.JPanel {
 
         EmuladorFA emulatorDNA = new EmuladorFA(dfa);
 
-        faTableDFA.setAutomata(emulatorDNA);
+        faTableDFA.setAutomata(dfa);
         emuladorDFA.setFA(emulatorDNA);
     }
 
     public void setNFA(NFA nfa) {
         EmuladorFA emulatorNFA = new EmuladorFA(nfa);
 
-        fAtable1.setAutomata(emulatorNFA);
+        fAtable1.setAutomata(nfa);
         nfaEmulator.setFA(emulatorNFA);
     }
 
     public void setDFAMin(DFA dfamin) {
 
+        System.out.println(dfamin);
         EmuladorFA emulatorDNA = new EmuladorFA(dfamin);
 
-        mDNATable.setAutomata(emulatorDNA);
+        
+        mDNATable.setAutomata(dfamin);
         mDNAemulador.setFA(emulatorDNA);
-
+System.out.println(dfamin);
     }
 
     public void setExprReg(String nombre, String alfabeto, String expresion) {

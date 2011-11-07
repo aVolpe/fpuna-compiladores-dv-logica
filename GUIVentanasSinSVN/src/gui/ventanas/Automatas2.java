@@ -37,7 +37,7 @@ public class Automatas2 extends javax.swing.JPanel {
 
 
         EmuladorFA emulatorDNA = new EmuladorFA(dfa);
-        fAVisualizdor2.fAtable1.setAutomata(emulatorDNA);
+        fAVisualizdor2.fAtable1.setAutomata(dfa);
         fAVisualizdor2.emulator21.setFA(emulatorDNA);
         
     }
@@ -45,7 +45,7 @@ public class Automatas2 extends javax.swing.JPanel {
     public void setNFA(NFA nfa) {
         EmuladorFA emulatorNFA = new EmuladorFA(nfa);
 
-        fAVisualizdor1.fAtable1.setAutomata(emulatorNFA);
+        fAVisualizdor1.fAtable1.setAutomata(nfa);
         fAVisualizdor1.emulator21.setFA(emulatorNFA);
     }
 
@@ -53,7 +53,7 @@ public class Automatas2 extends javax.swing.JPanel {
 
         EmuladorFA emulatorDNA = new EmuladorFA(dfamin);
 
-       fAVisualizdor3.fAtable1.setAutomata(emulatorDNA);
+       fAVisualizdor3.fAtable1.setAutomata(dfamin);
        fAVisualizdor3.emulator21.setFA(emulatorDNA);
 
     }

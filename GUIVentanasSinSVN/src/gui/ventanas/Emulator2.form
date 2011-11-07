@@ -29,9 +29,13 @@
                       <Component id="cadena" pref="564" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="previusNFA" min="-2" max="-2" attributes="0"/>
+                      <Component id="playNFA" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="playNFA" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbParar" min="-2" pref="104" max="-2" attributes="0"/>
+                      <EmptySpace pref="306" max="32767" attributes="0"/>
+                      <Component id="labelAceptada" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="previusNFA" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="nextNFA" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -53,8 +57,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nextNFA" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="previusNFA" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="playNFA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="previusNFA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbParar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAceptada" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -87,8 +93,12 @@
     <Component class="javax.swing.JButton" name="previusNFA">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="previusNFA.text"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="previusNFA" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="previusNFAMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="playNFA">
       <Properties>
@@ -102,6 +112,22 @@
     <Component class="gui.ventanas.GraficadorFA" name="graficadorFA1">
       <Properties>
         <Property name="name" type="java.lang.String" value="graficadorFA1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbParar">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jbParar.text"/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="name" type="java.lang.String" value="jbParar" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbPararMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelAceptada">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="labelAceptada.text"/>
+        <Property name="name" type="java.lang.String" value="labelAceptada" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>
