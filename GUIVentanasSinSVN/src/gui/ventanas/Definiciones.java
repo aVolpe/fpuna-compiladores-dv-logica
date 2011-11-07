@@ -48,6 +48,14 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
     AGuardar aGuardar;
 
     /** Creates new form Definiciones */
+    
+    public void nullateComponets(){
+        this.alf= null;
+        this.mapadeNfas = null;
+        this.reg = null;
+        this.guardador=null;
+        this.aGuardar=null;
+    }
     public Definiciones() {
         initComponents();
         guardador = new Guardador();
@@ -70,6 +78,7 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
     }
 
     public void itemStateChanged(ItemEvent ie) {
+        alf=null;
         String s = (String) ie.getItem();
         if (s.equalsIgnoreCase("Definir Alfabeto")) {
             this.jLabel3.setVisible(true);
@@ -297,6 +306,7 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
         });
 
         jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setEnabled(false);
         jButton4.setName("jButton4"); // NOI18N
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -380,6 +390,7 @@ public class Definiciones extends javax.swing.JPanel implements ItemListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1HierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jPanel1HierarchyChanged
+        this.validate();
 }//GEN-LAST:event_jPanel1HierarchyChanged
 
     public void aGregarATabla(String expNombre, String expr) {
@@ -454,23 +465,25 @@ private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {
                                  
 
 private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        //this.nullateComponets();
+        this.jButton4.setEnabled(true);
         try {
             if (nombreDef == null || nombreDef.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Defina un nombre para su Definición");
-            } else if (alf == null) {
-                if (!this.alfDefinido.getText().equalsIgnoreCase("")) {  // auxParaNfas definido por usuario
-                    try {
-                        this.alf = new Alfabeto(this.alfDefinido.getText());
+            } 
+            if (!this.alfDefinido.getText().equalsIgnoreCase("")&& this.alfDefinido.isEnabled()) {  // auxParaNfas definido por usuario
+                try {
+                    this.alf = new Alfabeto(this.alfDefinido.getText());
 
-                    } catch (CaracterNoValidoEnExpresionRegularException ex) {
-                        JOptionPane.showMessageDialog(this, "El alfabeto Definido contiene caracteres Especiales. "
-                                + "\n Por favor redefina su alfabeto");
+                } catch (CaracterNoValidoEnExpresionRegularException ex) {
+                    JOptionPane.showMessageDialog(this, "El alfabeto Definido contiene caracteres Especiales. "
+                            + "\n Por favor redefina su alfabeto");
 
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Seleccione o defina un Alfabeto");
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione o defina un Alfabeto");
             }
+            
             if (alf != null && nombreDef != null && !nombreDef.getText().equalsIgnoreCase("")) {
                 // ya tenemos el auxParaNfas.. podemos crear la definicion regular..
                 reg = new DefRegular(alf);
@@ -490,6 +503,7 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
                 aGuardar = new AGuardar();
                 aGuardar.setDefRegular(reg);
+        
 
                 Expresiones nuevo = new Expresiones();
                 nuevo.poblar(aGuardar);

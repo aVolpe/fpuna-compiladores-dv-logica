@@ -51,8 +51,7 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
         this.jLabel3.setVisible(false);
         this.alfDefinido.setVisible(false);
 
-        this.jLabel7.setVisible(false);
-        this.jLabel8.setVisible(false);
+       
 
         comboBoxAlfabetos.addItem("Seleccione Un Alfabeto");
         comboBoxAlfabetos.addItem("a y b");
@@ -73,16 +72,14 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
             this.alfDefinido.setVisible(true);
             this.alfDefinido.setEditable(true);
             this.alfDefinido.setText("");
-            this.jLabel7.setVisible(true);
-            this.jLabel8.setVisible(true);
+           
         } else if (!s.equalsIgnoreCase("Seleccione un Alfabeto")) {
             alf = new Alfabeto(Alfabetos.fromString(s));
             this.alfDefinido.setEditable(false);
             this.jLabel3.setVisible(false);
             this.alfDefinido.setVisible(false);
 
-            this.jLabel7.setVisible(false);
-            this.jLabel8.setVisible(false);
+            
         } else {
             alf = null;
         }
@@ -105,17 +102,8 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        nombreExp = new javax.swing.JTextField();
-        exp = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         nombreDef = new javax.swing.JTextField();
 
@@ -128,6 +116,8 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
             }
         });
 
+        comboBoxAlfabetos.setEnabled(false);
+        comboBoxAlfabetos.setFocusable(false);
         comboBoxAlfabetos.setName("comboBoxAlfabetos"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(gui.ventanas.GrafosVentanasApp.class).getContext().getResourceMap(DefinicionRegular.class);
@@ -150,24 +140,6 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
 
-        nombreExp.setName("nombreExp"); // NOI18N
-
-        exp.setName("exp"); // NOI18N
-
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
-
-        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
-        jLabel6.setName("jLabel6"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -186,24 +158,11 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
                 return types [columnIndex];
             }
         });
+        jTable1.setEnabled(false);
+        jTable1.setFocusable(false);
         jTable1.setName("jTable1"); // NOI18N
+        jTable1.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(jTable1);
-
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
-        jButton6.setName("jButton6"); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -216,59 +175,18 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(nombreExp, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(257, 257, 257))
-                                    .addComponent(exp))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
-                .addContainerGap(241, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton6)
-                .addContainerGap(716, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(16, 16, 16)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
-
-        jLabel7.setForeground(resourceMap.getColor("jLabel7.foreground")); // NOI18N
-        jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
-        jLabel7.setName("jLabel7"); // NOI18N
-
-        jLabel8.setForeground(resourceMap.getColor("jLabel8.foreground")); // NOI18N
-        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
-        jLabel8.setName("jLabel8"); // NOI18N
 
         jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
         jLabel9.setName("jLabel9"); // NOI18N
@@ -300,9 +218,7 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(comboBoxAlfabetos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(alfDefinido, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(alfDefinido, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -321,11 +237,7 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(alfDefinido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addGap(16, 16, 16)
+                .addGap(54, 54, 54)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -342,120 +254,9 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String expNombre = this.nombreExp.getText();
-        String exp = this.exp.getText();
-        DefaultTableModel modelo = (DefaultTableModel) this.jTable1.getModel();
-        Object[] fila = new Object[2];
-        fila[0] = expNombre;
-        fila[1] = exp;
-        int filas = modelo.getRowCount();
-        int columnas = modelo.getColumnCount();
-        if (filas == 0) {
-            modelo.addRow(fila);
-        } else {
-            boolean agregar = true;
-            for (int i = 0; i < columnas; i++) {
-                for (int j = 0; j < filas; j++) {
-                    Object o = modelo.getValueAt(j, i);
-                    if (((modelo.getValueAt(j, i))).equals(fila[0])) {
-                        agregar = false;
-                        JOptionPane.showMessageDialog(this, "Ya existe");
-                        break;
-                    }
-                }
-                if (agregar == false) {
-                    break;
-                }
-            }
-            if (agregar == true) {
-                modelo.addRow(fila);
-                this.nombreExp.setText("");
-                this.exp.setText("");
-            }
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) this.jTable1.getModel();
-        int filas = modelo.getRowCount();
-        if (filas == 0) {
-            JOptionPane.showMessageDialog(this, "Tabla Vacía");
-        } else if (this.jTable1.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione una Expresión a Eliminar");
-        } else {
-            int fila = this.jTable1.getSelectedRow();
-            modelo.removeRow(fila);
-        }
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        try {
-            if (nombreDef == null || nombreDef.getText().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(this, "Defina un nombre para su Definición");
-            } else if (alf == null) {
-                if (!this.alfDefinido.getText().equalsIgnoreCase("")) {  // alfabeto definido por usuario
-                    try {
-                        this.alf = new Alfabeto(this.alfDefinido.getText());
-
-                    } catch (CaracterNoValidoEnExpresionRegularException ex) {
-                        JOptionPane.showMessageDialog(this, "El alfabeto Definido contiene caracteres Especiales. "
-                                + "\n Por favor redefina su alfabeto");
-
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Seleccione o defina un Alfabeto");
-                }
-            }
-            if (alf != null && nombreDef != null && !nombreDef.getText().equalsIgnoreCase("")) {
-                // ya tenemos el alfabeto.. podemos crear la definicion regular..
-                reg = new DefRegular(alf);
-                reg.setName(nombreDef.getText());
-
-                List<String> expresiones = new ArrayList<String>();
-                DefaultTableModel modelo = (DefaultTableModel) this.jTable1.getModel();
-                int filas = modelo.getRowCount();
-                int columnas = 2;
-                for (int j = 0; j < filas; j++) {
-                    String nombre = (String) modelo.getValueAt(j, 0);
-                    String expresion = (String) modelo.getValueAt(j, 1);
-                    expresiones.add(nombre + " -> " + expresion);
-                }
-                reg.poblar(expresiones);
-                //
-                
-                aGuardar = new AGuardar();
-                aGuardar.setDefRegular(reg);
-                
-                Expresiones nuevo = new Expresiones();
-        
-                nuevo.poblarInterno(aGuardar);
-                //this.add(aGuardar.getDefRegular().getName() , nuevo);
-                
-                //mapadeNfas = reg.generarNFAs();
-            }
-        } catch (ExpresionIncorrectaException ex) {
-             JOptionPane.showMessageDialog(this, "Expresion Regular definida Incorrectamente");
-        } catch (LetraNoPerteneceAlfabeto ex) {
-             JOptionPane.showMessageDialog(this, "Error: Letra no pertenece al alfabeto\n " + ex.getMessage());
-        } catch (ParentesisDesvalanceadosException ex) {
-            JOptionPane.showMessageDialog(this, "Error: Parentesis desvalanceados en Expresión Regular");
-        } catch (IdentificadorNoValidoException ex) {
-           JOptionPane.showMessageDialog(this, "Identificador no valido" );
-        } catch (IdentificadorNoEncontradoException ex) {
-            JOptionPane.showMessageDialog(this, "Identificador no encontrado. \n" + ex.getMessage());
-        } catch (CaracterNoValidoEnExpresionRegularException ex) {
-            JOptionPane.showMessageDialog(this, "Error: Letra no pertenece al alfabeto" + ex.getMessage());
-        } catch (StackOverflowError ex){
-            JOptionPane.showMessageDialog(this, "Error: Referencias Cruzadas entre Identificadores");
-        }
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void nombreDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreDefActionPerformed
         // TODO add your handling code here:
@@ -467,24 +268,15 @@ public class DefinicionRegular extends javax.swing.JPanel implements ItemListene
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField alfDefinido;
     public javax.swing.JComboBox comboBoxAlfabetos;
-    public javax.swing.JTextField exp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton6;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     public javax.swing.JTextField nombreDef;
-    public javax.swing.JTextField nombreExp;
     // End of variables declaration//GEN-END:variables
 }
