@@ -6,7 +6,7 @@ import java.util.EmptyStackException;
 import java.util.Map.Entry;
 import java.util.Stack;
 
-import constantes.letras;
+import constantes.Letras;
 
 public class EmuladorFA extends FA {
 	ArrayList<Nodo> actuales;
@@ -146,8 +146,8 @@ public class EmuladorFA extends FA {
 //						continue;
 //					nActuales.add(apuntado);
 //				}
-			if (nodo.apuntados.get(letras.empty) != null)
-				for (Nodo apuntado : nodo.apuntados.get(letras.empty)) {
+			if (nodo.apuntados.get(Letras.empty) != null)
+				for (Nodo apuntado : nodo.apuntados.get(Letras.empty)) {
 					avanzar(letra, apuntado, nActuales, avanzo);
 				}
 		}
@@ -192,8 +192,8 @@ public class EmuladorFA extends FA {
 				nActuales.add(apuntado);
 				avanzo = true;
 			}
-		if (partir.apuntados.get(letras.empty) != null)
-			for (Nodo apuntado : partir.apuntados.get(letras.empty)) {
+		if (partir.apuntados.get(Letras.empty) != null)
+			for (Nodo apuntado : partir.apuntados.get(Letras.empty)) {
 				if (apuntado.equals(partir))
 					continue;
 				avanzar(letra, apuntado, nActuales, avanzo);
@@ -242,8 +242,10 @@ public class EmuladorFA extends FA {
 	public boolean acepta(Nodo nodo) {
 		if (finales.contains(nodo))
 			return true;
-                if (nodo.apuntados.get(letras.empty) == null) return false;
-		for (Nodo apuntado : nodo.apuntados.get(letras.empty)) {
+
+                if (nodo.apuntados.get(Letras.empty) == null) return false;
+		for (Nodo apuntado : nodo.apuntados.get(Letras.empty)) {
+
 			if (finales.contains(apuntado))
 				return true;
 			if (acepta(apuntado)) {

@@ -14,7 +14,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class Guardador {
 
-    String path = "D:\\Programacion\\JAVA\\graficos\\";
+    String path = "C:\\eclipse\\graficos\\";
     XStream xs;
 
     public Guardador() {

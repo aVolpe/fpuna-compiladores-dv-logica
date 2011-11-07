@@ -1,5 +1,6 @@
 package compiladores;
 
+import constantes.Letras;
 import enumeraciones.Alfabetos;
 import excepciones.CaracterNoValidoEnExpresionRegularException;
 import excepciones.ExpresionIncorrectaException;
@@ -30,22 +31,22 @@ public class Alfabeto {
 		alfabetos = alfabeto;
                 //TODO ARREGLAR PARA QUE CIERTOS ALFABETOS NO TENGAN LOS SESPECIALES QUE SERAN USADOS EN LOS FA 
 		if (alfabeto == Alfabetos.LETRAS_MINUSCULAS)
-			letras = (SLetrasMay + constantes.letras.empty).toCharArray();
+			letras = (SLetrasMin + constantes.Letras.empty).toCharArray();
 		if (alfabeto == Alfabetos.LETRAS_MAYUSCULAS)
-			letras = (SLetrasMin + constantes.letras.empty ).toCharArray();
+			letras = (SLetrasMay + constantes.Letras.empty ).toCharArray();
 		if (alfabeto == Alfabetos.LETRAS_TODAS)
-			letras = (SLetrasMin + SLetrasMay  + constantes.letras.empty).toCharArray();
+			letras = (SLetrasMin + SLetrasMay  + constantes.Letras.empty).toCharArray();
 		if (alfabeto == Alfabetos.NUMEROS)
-			letras = (SNumeros + constantes.letras.empty ).toCharArray();
+			letras = (SNumeros + constantes.Letras.empty ).toCharArray();
 		if (alfabeto == Alfabetos.MAY_MIN_NUMEROS)
-			letras = (SLetrasMin + SLetrasMay + SNumeros + constantes.letras.empty)
+			letras = (SLetrasMin + SLetrasMay + SNumeros + constantes.Letras.empty)
 					.toCharArray();
 		if (alfabeto == Alfabetos.ESPECIALES)
-			letras = ( SEspeciales +SAgrupadores+ constantes.letras.empty).toCharArray();  
+			letras = ( SEspeciales +SAgrupadores+ constantes.Letras.empty).toCharArray();  
 		if (alfabeto == Alfabetos.AYB)
-			letras = ("ab" + constantes.letras.empty).toCharArray();
+			letras = ("ab" + constantes.Letras.empty).toCharArray();
 		if (alfabeto == Alfabetos.CyU)
-			letras = ("01" + constantes.letras.empty).toCharArray();
+			letras = ("01" + constantes.Letras.empty).toCharArray();
 	}
         public void agregarLetras(String aAgregar){
             String actuales = String.valueOf(this.letras);
@@ -65,9 +66,7 @@ public class Alfabeto {
         	for (int j = 0; j< nAlfabeto.length; j++) {
         		char letra = nAlfabeto[j];
                         
-                        if (letra == ','){
-                            continue;
-                        }
+                       
                         if (letra == '\\'){
                             if (j+1 < nAlfabeto.length){
                                 this.letras = (String.valueOf(this.letras) + nAlfabeto[j+1]).toCharArray();
@@ -150,7 +149,8 @@ public class Alfabeto {
         		if (aRet!=null)
         			this.letras = (String.valueOf(this.letras) + String.valueOf(aRet.letras)).toCharArray() ;
         	}
-                this.letras = (String.valueOf(this.letras) + constantes.letras.empty).toCharArray() ;
+                if (!String.valueOf(this.letras).contains(Letras.empty))
+                    this.letras = (String.valueOf(this.letras) + constantes.Letras.empty).toCharArray() ;
         }
 
 	public Alfabeto(String nAlfabeto)
