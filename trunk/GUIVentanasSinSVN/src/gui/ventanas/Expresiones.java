@@ -70,13 +70,13 @@ public class Expresiones extends javax.swing.JPanel {
             }
             if (agregar == true) {
                 modelo.addRow(fila);
-                defGUI.nombreExp.setText("");
-                defGUI.exp.setText("");
+              
             }
         }
     }
 
     public void poblarInterno (AGuardar aGuardar){
+        System.out.println(jTabbedPane1.getTabCount());
         for (ExprAGuardar expr : aGuardar.getExpresiones()) {
             //Automatas nuevo = new Automatas();
             Automatas2 nuevo = new Automatas2();
@@ -92,8 +92,11 @@ public class Expresiones extends javax.swing.JPanel {
             dfaMinino.setAlfabeto(alfeto);
             nuevo.setDFAMin(dfaMinino);
             nuevo.setBNF(expr.getBnf());
-            jTabbedPane1.addTab(expr.getNombre(), nuevo);
+            System.out.println(expr.getNombre());
+            jTabbedPane1.insertTab(expr.getNombre(),null, nuevo,("Conversión de "+expr.getNombre() ),jTabbedPane1.getTabCount());
+           
         }
+       
     }
      
     public void poblar(AGuardar aGuardar) {
@@ -112,8 +115,8 @@ public class Expresiones extends javax.swing.JPanel {
             dfaMinino.setAlfabeto(alfeto);
             nuevo.setDFAMin(dfaMinino);
             nuevo.setBNF(expr.getBnf());
-            jTabbedPane1.addTab(expr.getNombre(), nuevo);
-            
+            jTabbedPane1.insertTab(expr.getNombre(),null, nuevo,("Conversión de "+expr.getNombre() ),jTabbedPane1.getTabCount());
+        }
             // poner las variables asignadas
             DefinicionRegular defGUI  = this.definicionRegular1;
             DefRegular def = aGuardar.getDefRegular();
@@ -128,7 +131,7 @@ public class Expresiones extends javax.swing.JPanel {
             }
             else{
                 defGUI.comboBoxAlfabetos.setSelectedItem("Definir Alfabeto");
-                String letras = new String (def.alfabeto.letras).replace(constantes.letras.empty, "");
+                String letras = new String (def.alfabeto.letras).replace(constantes.Letras.empty, "");
                 String toRep = letras;
                for(int i = 0 ; i < (Alfabeto.SEspeciales + Alfabeto.SAgrupadores).toCharArray().length; i++){
                    char letra = (Alfabeto.SEspeciales + Alfabeto.SAgrupadores).toCharArray()[i];
@@ -139,14 +142,12 @@ public class Expresiones extends javax.swing.JPanel {
               
                 defGUI.alfDefinido.setText(toRep);
                 defGUI.jLabel3.setVisible(true);
-                defGUI.jLabel7.setVisible(true);
-                defGUI.jLabel8.setVisible(true);
                 defGUI.alfDefinido.setVisible(true);
             }
              
-             
             
-        }
+            
+        
     }
     public int getIndex() {
         return index;
