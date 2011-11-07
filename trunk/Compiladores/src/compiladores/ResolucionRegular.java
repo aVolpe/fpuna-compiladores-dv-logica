@@ -1,6 +1,6 @@
 package compiladores;
 
-import enumeraciones.Alfabetos;
+import automatas.NFA;
 import enumeraciones.Thompson;
 import excepciones.CaracterNoValidoEnExpresionRegularException;
 import excepciones.ExpresionIncorrectaException;
@@ -8,12 +8,11 @@ import excepciones.IdentificadorNoEncontradoException;
 import excepciones.IdentificadorNoValidoException;
 import excepciones.LetraNoPerteneceAlfabeto;
 import excepciones.ParentesisDesvalanceadosException;
-import automatas.NFA;
 
 public class ResolucionRegular {
 	
 	public static ExprRegular resoverCorchetes(ExprRegular reg) throws ExpresionIncorrectaException{
-		ExprRegular exp = null;
+		
 		String cadena = reg.cadena;
 		String entreCorchetes ="";
 		boolean agrupador = false;
@@ -114,14 +113,14 @@ public class ResolucionRegular {
 			return null;
 		boolean openParethesis = false;
                 boolean especial = false;
-		ExprRegular exp = null;
+//		ExprRegular exp = null;
 		String cadena = reg.cadena;
 		int parentesis = 0;
 		int regLength = cadena.length();
 		int openParentesisAt =0;
 		NFA nfa = null;
 		NFA nfaUnario = null;
-                Alfabeto inicial = new Alfabeto(reg.alfabeto);
+//                Alfabeto inicial = new Alfabeto(reg.alfabeto);
                
                 
 		//PilaExp pilaCaracteres = new PilaExp(regLength);
@@ -322,7 +321,7 @@ public class ResolucionRegular {
 				if ((i+1)<regLength){
 					char siguiente = cadena.charAt(i+1);
 					if (Alfabeto.SEspeciales.contains("" + siguiente) )throw new CaracterNoValidoEnExpresionRegularException("Expresion Mal formada: " + cadena);
-					String hola = cadena.substring(i+1);
+//					String hola = cadena.substring(i+1);
 					if (nfa!= null)
 						nfa = NFA.ConstruirNFA(Thompson.Y,nfa, NFA.ConstruirNFA(Thompson.O, nfaUnario,generarNfa(new ExprRegular(cadena.substring(i + 1),reg.alfabeto,!openParethesis))));
 					else
@@ -373,26 +372,26 @@ public class ResolucionRegular {
 		
 	}
 	
-	public static void main(String[] args) {
-		//ResolucionRegular res = new ResolucionRegular(")", new Alfabeto(Alfabetos.MAY_MIN_NUMEROS));
-		try {
-			NFA nfa = generarNfa(new ExprRegular("bb+|c*",new Alfabeto(Alfabetos.LETRAS_TODAS) ));
-		} catch (IdentificadorNoEncontradoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LetraNoPerteneceAlfabeto e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParentesisDesvalanceadosException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IdentificadorNoValidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CaracterNoValidoEnExpresionRegularException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		//ResolucionRegular res = new ResolucionRegular(")", new Alfabeto(Alfabetos.MAY_MIN_NUMEROS));
+//		try {
+//			NFA nfa = generarNfa(new ExprRegular("bb+|c*",new Alfabeto(Alfabetos.LETRAS_TODAS) ));
+//		} catch (IdentificadorNoEncontradoException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (LetraNoPerteneceAlfabeto e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (ParentesisDesvalanceadosException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IdentificadorNoValidoException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (CaracterNoValidoEnExpresionRegularException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 }

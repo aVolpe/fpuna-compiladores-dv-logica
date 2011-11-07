@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-
 import automatas.NFA;
-
-import enumeraciones.Alfabetos;
-import excepciones.*;
+import excepciones.CaracterNoValidoEnExpresionRegularException;
+import excepciones.ExpresionIncorrectaException;
+import excepciones.IdentificadorNoEncontradoException;
+import excepciones.IdentificadorNoValidoException;
+import excepciones.LetraNoPerteneceAlfabeto;
+import excepciones.ParentesisDesvalanceadosException;
 
 public class DefRegular {
 	// IMPUT

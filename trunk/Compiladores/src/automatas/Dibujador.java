@@ -3,16 +3,14 @@ package automatas;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map.Entry;
 
 public class Dibujador {
 
 
-	String path = "C:\\Archivos de Programa\\Graphviz 2.28\\bin\\dot.exe";
-	String output = "D:\\tp conpiladores netbeans ws\\graficos\\";
-	final String fOutput = "D:\\tp conpiladores netbeans ws\\graficos\\";
-	String input = "D:\\tp conpiladores netbeans ws\\graficos\\grafo.txt";
+	String path = "D:\\Program Files (x86)\\Graphviz 2.28\\bin\\dot.exe";
+	String output = "D:\\10mo Semestre\\WSCompiladores\\Graficos\\";
+	String input = "D:\\10mo Semestre\\WSCompiladores\\Graficos\\grafo.txt";
 
 	private FA automata;
 	private EmuladorFA emulado;

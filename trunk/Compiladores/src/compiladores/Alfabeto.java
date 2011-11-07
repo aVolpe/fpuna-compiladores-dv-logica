@@ -3,7 +3,6 @@ package compiladores;
 import enumeraciones.Alfabetos;
 import excepciones.CaracterNoValidoEnExpresionRegularException;
 import excepciones.ExpresionIncorrectaException;
-import java.util.regex.*;
 
 public class Alfabeto {
 	public static String SLetrasMin = "abcdefghijklmnopqrstuvwxyz";

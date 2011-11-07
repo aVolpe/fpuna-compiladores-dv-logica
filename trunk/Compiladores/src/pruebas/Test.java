@@ -2,18 +2,14 @@ package pruebas;
 
 import java.util.ArrayList;
 
-import compiladores.Alfabeto;
-
-import archivos.AGuardar;
-import archivos.Guardador;
-import automatas.DFA;
 import automatas.Dibujador;
 import automatas.EmuladorFA;
 import automatas.FA;
-import automatas.NFA;
 import automatas.Nodo;
+
+import compiladores.Alfabeto;
+
 import enumeraciones.Alfabetos;
-import enumeraciones.Thompson;
 import excepciones.ExpresionIncorrectaException;
 import excepciones.IdentificadorNoEncontradoException;
 import excepciones.IdentificadorNoValidoException;
@@ -162,9 +158,9 @@ public class Test {
 		Nodo p1 = new Nodo("P1");
 		Nodo p2 = new Nodo("P2");
 		prueba.setInicial(p1);
-		ArrayList temp = new ArrayList();
+		ArrayList<Nodo> temp = new ArrayList<Nodo>();
 		temp.add(p2);
-		//prueba.setFinales(temp);
+		prueba.setFinales(temp);
 		p1.addTransicion(p2, "a");
 		p1.addTransicion(p2, "b");
 		prueba.AgregarNodo(p1);
