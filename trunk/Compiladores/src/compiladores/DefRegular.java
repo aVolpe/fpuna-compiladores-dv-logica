@@ -155,6 +155,7 @@ public class DefRegular {
 			}
 			if (letra == '{') {
 				nIdentificador = "";
+                                if (!expresion.cadena.contains("}"))throw new ExpresionIncorrectaException("Expresion mal formada");
 				identificador = true;
 				continue;
 			}
@@ -163,6 +164,7 @@ public class DefRegular {
 				cadenaNueva += letra;
 			}
 		}
+                if (identificador) throw new ExpresionIncorrectaException("Expresion mal formada");
 		exprnueva = new ExprRegular(cadenaNueva, expresion.alfabeto);
 		regs.put(nombre, exprnueva);
 		exprnueva = ResolucionRegular.resoverCorchetes(exprnueva);
