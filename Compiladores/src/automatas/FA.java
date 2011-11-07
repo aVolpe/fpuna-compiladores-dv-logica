@@ -2,14 +2,9 @@ package automatas;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
 
 import compiladores.Alfabeto;
-
-import compiladores.ExprRegular;
-
-import excepciones.CaracterNoValidoEnExpresionRegularException;
 
 public class FA {
 
