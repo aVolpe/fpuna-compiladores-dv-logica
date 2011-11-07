@@ -211,8 +211,8 @@ public class DFA extends FA {
 		NombreyNodos actual = iterador.next();
 		int i = 0;
 		while (actual != null) {
-			System.out.println("Iteracion : " + i++);
-			NombreyNodos.imprimirLista(actuales);
+//			System.out.println("Iteracion : " + i++);
+//			NombreyNodos.imprimirLista(actuales);
 
 			// por cada nodo del actual
 			ArrayList<NombreyNodos> spliteados = new ArrayList<NombreyNodos>();
